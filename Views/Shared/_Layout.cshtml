@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+
+                @if (Session["username"] == null)
+                {
+                    @Html.ActionLink("TurabBl", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("TurabBl", "Index", "Kullanici", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Meqaleler", "Index", "Makale", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                
+            </div>
+            <div class="navbar-collapse navbar-right">
+                @if (Session["username"] == null)
+                {
+                    @Html.ActionLink("Qeydiyyat Ol", "Create", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Giris Et", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink(Session["username"].ToString(), "Profil", "Kullanici", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Cixis Et", "Logout", "Kullanici", new { area = "" }, new { @class = "navbar-brand" })
+
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @RenderSection("scripts",required: false)
+</body>
+</html>

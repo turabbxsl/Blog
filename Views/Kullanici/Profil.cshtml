@@ -1,0 +1,62 @@
+﻿@model Blogsayt.Models.tbl_kullanici
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center text-info">@Session["username"].ToString()</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.tbl_yetki.yetkiadi)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soyisim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soyisim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kayittarixi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kayittarixi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sifre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sifre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Guncelle", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Ana Sehifeye Qayid", "Index", "Home")
+</p>

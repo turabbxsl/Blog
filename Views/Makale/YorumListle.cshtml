@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Blogsayt.Models.tbl_yorum>
+
+@foreach (var item in Model)
+{
+    @Html.DisplayFor(modelItem => item.tbl_kullanici.kullaniciadi)
+    <br />
+    @Html.DisplayFor(modelItem => item.yorumicerik)
+    <br />
+    @Html.DisplayFor(modelItem => item.tarix)
+    <br />
+    if (item.tbl_kullanici.kullaniciadi == Session["username"].ToString())
+    {
+        <p>
+
+            @Html.ActionLink("Guncelle", "Edit", new { id = item.id })
+            @Html.ActionLink("Sil", "YorumDelete", new { id = item.id })
+
+        </p>
+    }
+    else if (item.tbl_makale.tbl_kullanici.kullaniciadi == Session["username"].ToString())
+    {
+        <p>
+            @Html.ActionLink("Sil", "YorumDelete", new { id = item.id })
+        </p>
+    }
+    <hr />
+}
+
